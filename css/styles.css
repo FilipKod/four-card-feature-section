@@ -6,6 +6,9 @@
   --color-grey-500: hsl(234, 12%, 34%);
   --color-grey-400: hsl(212, 6%, 44%);
   --color-white: hsl(0, 0%, 100%);
+
+  --block-width: 314px;
+  --block-height: 250px;
 }
 
 *,
@@ -58,6 +61,10 @@ body {
 .blocks {
   display: grid;
   row-gap: 2rem;
+  grid-template-columns: var(--block-width);
+  grid-template-rows: repeat(4, var(--block-height));
+  justify-content: center;
+  margin-bottom: 2.875rem;
 }
 
 .block {
@@ -65,14 +72,13 @@ body {
   display: flex;
   flex-direction: column;
   row-gap: 2rem;
-  width: 316px;
-  margin: auto;
+  width: 314px;
+  height: 250px;
   padding: 2rem;
   background-color: var(--color-white);
   box-shadow: 0 15px 30px -11px rgba(131, 166, 210, 0.5);
   border-radius: 8px;
   overflow: hidden;
-  min-height: 250px;
 }
 
 .block::before {
@@ -123,4 +129,81 @@ body {
 .block__img {
   width: 64px;
   align-self: flex-end;
+}
+
+@media screen and (min-width: 600px) {
+  body {
+    row-gap: 4.625rem;
+  }
+
+  .header {
+    width: 540px;
+    margin: 5rem auto 0;
+  }
+
+  .header__title,
+  .header__sub-title {
+    font-size: 2.25rem;
+  }
+
+  .header__description {
+    font-size: 0.9375rem;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .blocks {
+    grid-template-columns: repeat(4, calc(var(--block-width) / 2 - 2rem / 2));
+    grid-template-rows: repeat(3, var(--block-height));
+    column-gap: 2rem;
+    margin-bottom: 5rem;
+  }
+
+  .block-supervisor {
+    grid-column: 2 / -1;
+  }
+
+  .block-karma {
+    grid-column: 3 / -1;
+  }
+
+  .block-calculator {
+    grid-column: 2 / -1;
+  }
+}
+
+@media screen and (min-width: 1150px) {
+  .header {
+    margin-top: 6.375rem;
+  }
+
+  .blocks {
+    --block-width: 350px;
+    grid-template-columns: repeat(3, var(--block-width));
+    grid-template-rows: repeat(4, calc(var(--block-height) / 2 - 2rem / 2));
+    margin-bottom: 10rem;
+  }
+
+  .block {
+    width: var(--block-width);
+  }
+
+  .block-supervisor {
+    grid-column: 1 / 1;
+    grid-row: 2 / -1;
+  }
+
+  .block-teambuilder {
+    grid-column: 2 / -1;
+  }
+
+  .block-karma {
+    grid-column: 2 / -1;
+    grid-row: 3 / -1;
+  }
+
+  .block-calculator {
+    grid-column: 3 / -1;
+    grid-row: 2 / -1;
+  }
 }
