@@ -173,10 +173,6 @@ body {
 }
 
 @media screen and (min-width: 1150px) {
-  body {
-    padding-bottom: 10rem;
-  }
-
   .header {
     margin-top: 6.375rem;
   }
@@ -185,6 +181,7 @@ body {
     --block-width: 350px;
     grid-template-columns: repeat(3, var(--block-width));
     grid-template-rows: repeat(4, calc(var(--block-height) / 2 - 2rem / 2));
+    margin-bottom: 10rem;
   }
 
   .block {
